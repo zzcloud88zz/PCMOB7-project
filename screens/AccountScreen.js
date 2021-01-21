@@ -3,7 +3,8 @@ import { Button, StyleSheet, Text, View } from "react-native";
 import { commonStyles } from "../styles/commonStyles";
 
 export default function AccountScreen({ navigation }) {
-  function signOut() {}
+  function signOut() {
+  }
 
   return (
     <View style={commonStyles.container}>
