@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Alert } from "react-native";
 import { Entypo } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import axios from "axios";
-import { FlatList } from "react-native-gesture-handler";
+import { FlatList, ScrollView } from "react-native-gesture-handler";
 
 const API = "https://zzcloud88zz.pythonanywhere.com";
 const API_ALLITEMS = "/items";
@@ -42,16 +42,22 @@ export default function IndexScreen({ route, navigation }) {
   // Return screen
   return (
     <View>
+      <ScrollView>
       {items.map(item => (
         <TouchableOpacity key={item.id} onPress={() => navigation.navigate("", item)} style={styles.container}>
-          <Text>
-            {item.id}. {item.stock}
+          <Text style={{ fontSize: 28, fontWeight: "bold" }}>
+            {item.id}. {item.stock}{"\n"}{"\n"}
+            <Text style={{ fontSize: 20, fontWeight: "normal" }}>
+              Amount: {item.amount}         Expiry: {item.expiry}{"\n"}{"\n"}
+              Category: {item.category}
+            </Text>
           </Text>
           <TouchableOpacity onPress={() => deleteItem(item.id)}>
-            <AntDesign name="delete" size={30} color="maroon" />
+            <AntDesign name="delete" size={36} color="maroon" />
           </TouchableOpacity>
         </TouchableOpacity>
       ))}
+      </ScrollView>
     </View>
   );
 
