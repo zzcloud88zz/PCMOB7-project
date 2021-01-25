@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Button, TouchableOpacity } from "react-native";
-import { commonStyles } from "../styles/commonStyles";
+import { StyleSheet, Text, View, TouchableOpacity, Alert } from "react-native";
 import { Entypo } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import axios from "axios";
@@ -48,13 +47,35 @@ export default function IndexScreen({ route, navigation }) {
           <Text>
             {item.id}. {item.stock}
           </Text>
-          <TouchableOpacity onPress={""}>
+          <TouchableOpacity onPress={() => deleteItem(item.id)}>
             <AntDesign name="delete" size={30} color="maroon" />
           </TouchableOpacity>
         </TouchableOpacity>
       ))}
     </View>
   );
+
+  function deleteItem(id) {
+    Alert.alert(
+      "Hold On!",
+      "Are you sure you want to delete?",
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Cancelled"),
+          style: "cancel"
+        },
+        { text: "OK", onPress: () => 
+          axios.delete(API + API_ALLITEMS + "/" + id)
+          .then(response => {
+            console.log(response.data)
+            const refresh = items.filter(item=>item.id !== id)
+            setItems(refresh)
+          })
+      }],
+      { cancelable: false }
+    );
+  }
 
 }
 
