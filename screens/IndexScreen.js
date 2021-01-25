@@ -37,7 +37,7 @@ export default function IndexScreen({ route, navigation }) {
     .catch(error => {
       console.log(error)
     })
-  }, [route.params?.title, route.paramas?.content])
+  }, [route.params?.stock, route.paramas?.amount, route.paramas?.expiry, route.paramas?.category])
 
   // Return screen
   return (
@@ -46,9 +46,10 @@ export default function IndexScreen({ route, navigation }) {
       {items.map(item => (
         <TouchableOpacity key={item.id} onPress={() => navigation.navigate("", item)} style={styles.container}>
           <Text style={{ fontSize: 28, fontWeight: "bold" }}>
-            {item.id}. {item.stock}{"\n"}{"\n"}
+            {item.id}. {item.stock}{"\n"}
             <Text style={{ fontSize: 20, fontWeight: "normal" }}>
-              Amount: {item.amount}         Expiry: {item.expiry}{"\n"}{"\n"}
+              Amount: {item.amount}{"\n"}
+              Expiry: {item.expiry}{"\n"}
               Category: {item.category}
             </Text>
           </Text>
