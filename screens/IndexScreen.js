@@ -44,7 +44,7 @@ export default function IndexScreen({ route, navigation }) {
     <View>
       <ScrollView>
       {items.map(item => (
-        <TouchableOpacity key={item.id} onPress={() => navigation.navigate("", item)} style={styles.container}>
+        <TouchableOpacity key={item.id} onPress={() => navigation.navigate("Details", item)} style={styles.container}>
           <Text style={{ fontSize: 28, fontWeight: "bold" }}>
             {item.id}. {item.stock}{"\n"}
             <Text style={{ fontSize: 20, fontWeight: "normal" }}>
