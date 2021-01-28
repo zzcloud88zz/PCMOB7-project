@@ -1,0 +1,8 @@
++ react-native-windows@0.63.19
+added 43 packages from 38 contributors and audited 996 packages in 12.844s
+
+25 packages are looking for funding
+  run `npm fund` for details
+
+found 11 low severity vulnerabilities
+  run `npm audit fix` to fix them, or `npm audit` for details
