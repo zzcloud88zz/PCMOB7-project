@@ -13,46 +13,49 @@ export default function EditScreen({ route, navigation }) {
   const [category, setCategory] = useState(route.params.category);
 
   return (
-    <View style={styles.pgoverview}>
-      <Text style={styles.header}>Edit item {id}!{"\n"}</Text>
-      <Text style={styles.label}>Edit stock:</Text>
-        <TextInput
-          style={styles.textInput}
-          value={stock}
-          onChangeText={(newStock) => setStock(newStock)}
-        ></TextInput>
+    <View>
+      <View style={styles.pgoverview}>
+        <Text style={styles.label}>Item: {id}</Text>
+          <TextInput
+            style={styles.InputFields}
+            value={stock}
+            onChangeText={(newStock) => setStock(newStock)}
+          ></TextInput>
 
-      <Text style={styles.label}>Edit amount:</Text>
-        <TextInput
-          style={styles.textInput}
-          value={amount}
-          onChangeText={(newAmount) => setAmount(newAmount)}
-        ></TextInput>
-      
-      <Text style={styles.label}>Edit expiry:</Text>
-        <TextInput
-          style={styles.textInput}
-          value={expiry}
-          onChangeText={(newExpiry) => setExpiry(newExpiry)}
-        ></TextInput>
+        <Text style={styles.label}>Amount:</Text>
+          <TextInput
+            style={styles.InputFields}
+            value={amount}
+            onChangeText={(newAmount) => setAmount(newAmount)}
+          ></TextInput>
+        
+        <Text style={styles.label}>Expiry:</Text>
+          <TextInput
+            style={styles.InputFields}
+            value={expiry}
+            onChangeText={(newExpiry) => setExpiry(newExpiry)}
+          ></TextInput>
 
-      <Text style={styles.label}>Edit category:</Text>
-        <TextInput
-          style={styles.textInput}
-          value={category}
-          onChangeText={(newCategory) => setCategory(newCategory)}
-        ></TextInput>
+        <Text style={styles.label}>Category:</Text>
+          <TextInput
+            style={styles.InputFields}
+            value={category}
+            onChangeText={(newCategory) => setCategory(newCategory)}
+          ></TextInput>
+      </View>
 
-      <TouchableOpacity
-        onPress={() => editItem()}
-        style={[styles.button]}
-      >
-        <Text style={styles.buttonText}>Save</Text>
-      </TouchableOpacity>
+      <View style={ styles.button }>
+        <TouchableOpacity
+          onPress={ EditItem }
+          style={[styles.submitButton ]}
+        >
+          <Text style={{ fontSize: 20 }}>Edit~!</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 
-  async function editItem() {
+  async function EditItem() {
     Keyboard.dismiss();
     try {
       const response = await axios.put(API + API_ALLITEMS + "/" + id, {
@@ -73,33 +76,32 @@ export default function EditScreen({ route, navigation }) {
 const styles = StyleSheet.create({
   pgoverview: {
     alignItems: "center",
-    marginTop: 20,
-  },
-  header: {
-    fontWeight: "bold",
-    fontSize: 24,
+    marginTop: 15,
+    marginLeft: 10,
   },
   label: {
     fontSize: 20,
     alignContent: "flex-start",
   },
-  textInput: {
-    margin: 20,
+  InputFields: {
+    backgroundColor: "whitesmoke",
+    margin: 10,
     borderWidth: 1,
     width: "80%",
     padding: 10,
     borderColor: "#ccc",
     fontSize: 18,
   },
-  button: {
-    padding: 10,
-    margin: 5,
+  submitButton: {
+    marginTop: 20,
+    padding: 20,
+    margin: 10,
+    alignItems: "center",
+    width: "35%",
     backgroundColor: "orange",
   },
-  buttonText: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "white",
-    textAlign: "center",
+  button: {
+    alignItems: "flex-end",
+    marginRight: 20,
   },
 });

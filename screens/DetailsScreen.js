@@ -47,6 +47,7 @@ export default function DetailsScreen({ route, navigation }) {
 const styles = StyleSheet.create({
   pgoverview: {
     marginTop: 20,
+    alignItems: "center",
   },
   header: {
     fontWeight: "bold",
@@ -56,11 +57,9 @@ const styles = StyleSheet.create({
   label: {
     fontWeight: "bold",
     fontSize: 20,
-    alignContent: "flex-start",
   },
   text: {
     margin: 20,
-    width: "80%",
     fontSize: 18,
   },
 });

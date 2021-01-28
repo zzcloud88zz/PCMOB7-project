@@ -45,20 +45,22 @@ export default function IndexScreen({ route, navigation }) {
     <View>
       <ScrollView>
       {items.map(item => (
-        <TouchableOpacity key={item.id} onPress={() => navigation.navigate("Details", item)}>
+        <TouchableOpacity key={item.id} onPress={() => navigation.navigate("Details", item)} style={ styles.wrapcontainer }>
           <View style={styles.container}>
             <Text style={{ fontSize: 25, fontWeight: "bold" }}>
               {item.id}. {item.stock}
             </Text>
 
             <View style={ styles.icons }>
+              {/* Import Checkbox Component */}
               <MyComponent/>
+              {/* Delete button */}
               <TouchableOpacity onPress={() => deleteItem(item.id)} style={{ paddingLeft: 15 }}>
                 <AntDesign name="delete" size={36} color="hotpink" />
               </TouchableOpacity>
             </View>
           </View>
-          <Text style={{ fontSize: 15, fontWeight: "normal", paddingLeft: 10 }}>
+          <Text style={ styles.subdetails }>
             Amount: {item.amount}{"\n"}
             Expiry: {item.expiry}{"\n"}
             Category: {item.category}
@@ -94,15 +96,24 @@ export default function IndexScreen({ route, navigation }) {
 }
 
 const styles = StyleSheet.create({
+  wrapcontainer: {
+    borderBottomWidth: 2,
+    borderBottomColor: "#7BDCB5",
+  },
   container: {
     paddingLeft: 10,
-    paddingTop: 20,
-    borderBottomColor: "#ccc",
+    paddingTop: 10,
     flexDirection: "row",
     justifyContent: "space-between",
   },
   icons: {
     flexDirection: "row",
     paddingRight: 10,
+  },
+  subdetails: {
+    fontSize: 15,
+    fontWeight: "normal",
+    paddingLeft: 10,
+    marginBottom: 5,
   },
 });
