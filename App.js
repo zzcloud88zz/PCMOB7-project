@@ -14,7 +14,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator mode="modal">
         <Stack.Screen component={IndexScreen} name="Index" options={{ title: 'Inventory' }} />
-        <Stack.Screen component={AddScreen} name="Additem" options={{ title: 'Add item' }} />
+        <Stack.Screen component={AddScreen} name="Additem" options={{ title: 'Add Stock' }} />
         <Stack.Screen component={DetailsScreen} name="Details" options={{ title: 'Stock Details' }} />
         <Stack.Screen component={EditScreen} name="EditItem" options={{ title: 'Edit item' }} />
       </Stack.Navigator>

@@ -4,6 +4,7 @@ import { Entypo } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import axios from "axios";
 import { FlatList, ScrollView } from "react-native-gesture-handler";
+import MyComponent from "./components/MyComponent";
 
 const API = "https://zzcloud88zz.pythonanywhere.com";
 const API_ALLITEMS = "/items";
@@ -37,25 +38,31 @@ export default function IndexScreen({ route, navigation }) {
     .catch(error => {
       console.log(error)
     })
-  }, [route.params?.stock, route.paramas?.amount, route.paramas?.expiry, route.paramas?.category])
+  }, [route.params?.id, route.params?.stock, route.paramas?.amount, route.paramas?.expiry, route.paramas?.category])
 
   // Return screen
   return (
     <View>
       <ScrollView>
       {items.map(item => (
-        <TouchableOpacity key={item.id} onPress={() => navigation.navigate("Details", item)} style={styles.container}>
-          <Text style={{ fontSize: 28, fontWeight: "bold" }}>
-            {item.id}. {item.stock}{"\n"}
-            <Text style={{ fontSize: 20, fontWeight: "normal" }}>
-              Amount: {item.amount}{"\n"}
-              Expiry: {item.expiry}{"\n"}
-              Category: {item.category}
+        <TouchableOpacity key={item.id} onPress={() => navigation.navigate("Details", item)}>
+          <View style={styles.container}>
+            <Text style={{ fontSize: 25, fontWeight: "bold" }}>
+              {item.id}. {item.stock}
             </Text>
+
+            <View style={ styles.icons }>
+              <MyComponent/>
+              <TouchableOpacity onPress={() => deleteItem(item.id)} style={{ paddingLeft: 15 }}>
+                <AntDesign name="delete" size={36} color="hotpink" />
+              </TouchableOpacity>
+            </View>
+          </View>
+          <Text style={{ fontSize: 15, fontWeight: "normal", paddingLeft: 10 }}>
+            Amount: {item.amount}{"\n"}
+            Expiry: {item.expiry}{"\n"}
+            Category: {item.category}
           </Text>
-          <TouchableOpacity onPress={() => deleteItem(item.id)}>
-            <AntDesign name="delete" size={36} color="maroon" />
-          </TouchableOpacity>
         </TouchableOpacity>
       ))}
       </ScrollView>
@@ -88,12 +95,14 @@ export default function IndexScreen({ route, navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
+    paddingLeft: 10,
     paddingTop: 20,
-    paddingBottom: 20,
     borderBottomColor: "#ccc",
-    borderBottomWidth: 1,
     flexDirection: "row",
     justifyContent: "space-between",
+  },
+  icons: {
+    flexDirection: "row",
+    paddingRight: 10,
   },
 });
