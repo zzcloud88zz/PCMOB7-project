@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, TextInput, Keyboard } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, TextInput, Keyboard, ImageBackground } from "react-native";
 import axios from "axios";
 
 const API = "https://zzcloud88zz.pythonanywhere.com";
@@ -13,44 +13,46 @@ export default function AddScreen({ navigation }) {
 
   return (
       <View>
-        <View style={styles.pgoverview}>
-          <Text style={styles.label}>Item:</Text>
-          <TextInput
-            style={styles.InputFields}
-            value={stock}
-            onChangeText={(newStock) => setStock(newStock)}
-          ></TextInput>
+        <ImageBackground source={require("./images/addscreen.jpg")} style={styles.image}>
+          <View style={styles.pgoverview}>
+            <Text style={styles.label}>Item:</Text>
+            <TextInput
+              style={styles.InputFields}
+              value={stock}
+              onChangeText={(newStock) => setStock(newStock)}
+            ></TextInput>
 
-          <Text style={styles.label}>Amount:</Text>
-          <TextInput
-            style={styles.InputFields}
-            value={amount}
-            onChangeText={(newAmount) => setAmount(newAmount)}
-          ></TextInput>
-          
-          <Text style={styles.label}>Expiry:</Text>
-          <TextInput
-            style={styles.InputFields}
-            value={expiry}
-            onChangeText={(newExpiry) => setExpiry(newExpiry)}
-          ></TextInput>
+            <Text style={styles.label}>Amount:</Text>
+            <TextInput
+              style={styles.InputFields}
+              value={amount}
+              onChangeText={(newAmount) => setAmount(newAmount)}
+            ></TextInput>
+            
+            <Text style={styles.label}>Expiry:</Text>
+            <TextInput
+              style={styles.InputFields}
+              value={expiry}
+              onChangeText={(newExpiry) => setExpiry(newExpiry)}
+            ></TextInput>
 
-          <Text style={styles.label}>Category:</Text>
-          <TextInput
-            style={styles.InputFields}
-            value={category}
-            onChangeText={(newCategory) => setCategory(newCategory)}
-          ></TextInput>
-        </View>
+            <Text style={styles.label}>Category:</Text>
+            <TextInput
+              style={styles.InputFields}
+              value={category}
+              onChangeText={(newCategory) => setCategory(newCategory)}
+            ></TextInput>
+          </View>
 
-        <View style={ styles.button }>
-          <TouchableOpacity
-            onPress={ AddItem }
-            style={ styles.submitButton }
-          >
-            <Text style={{ fontSize: 20 }}>Add~!</Text>
-          </TouchableOpacity>
-        </View>
+          <View style={ styles.button }>
+            <TouchableOpacity
+              onPress={ AddItem }
+              style={ styles.submitButton }
+            >
+              <Text style={{ fontSize: 20 }}>Add~!</Text>
+            </TouchableOpacity>
+          </View>
+        </ImageBackground>
       </View>
   );
 
@@ -79,8 +81,11 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   label: {
+    padding: 5,
+    marginTop: 20,
     fontSize: 20,
     alignContent: "flex-start",
+    backgroundColor: "grey",
   },
   InputFields: {
     backgroundColor: "whitesmoke",
@@ -101,6 +106,12 @@ const styles = StyleSheet.create({
   },
   button: {
     alignItems: "flex-end",
+    marginTop: 30,
     marginRight: 20,
+    marginBottom: 120,
+  },
+  image: {
+    resizeMode: "cover",
+    justifyContent: "center"
   },
 });

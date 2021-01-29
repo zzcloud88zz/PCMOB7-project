@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, ImageBackground } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
 
 export default function DetailsScreen({ route, navigation }) {
@@ -26,20 +26,26 @@ export default function DetailsScreen({ route, navigation }) {
   });
 
   return (
-    <View style={styles.pgoverview}>
-      <Text style={styles.header}>Item {id}{"\n"}</Text>
+    <View>
+      <ImageBackground source={require("./images/detailscreen.jpg")} style={styles.image}>
+        <View style={styles.pgoverview}>
+          <Text style={styles.header}>Item {id}</Text>
+          <Text>{"\n"}</Text>
 
-      <Text style={styles.label}>Stock:</Text>
-      <Text style={styles.text}>{stock}</Text>
+          <Text style={styles.label}>Stock:</Text>
+          <Text style={styles.text}>{stock}</Text>
 
-      <Text style={styles.label}>Amount:</Text>
-      <Text style={styles.text}>{amount}</Text>
+          <Text style={styles.label}>Amount:</Text>
+          <Text style={styles.text}>{amount}</Text>
 
-      <Text style={styles.label}>Expiry:</Text>
-      <Text style={styles.text}>{expiry}</Text>
+          <Text style={styles.label}>Expiry:</Text>
+          <Text style={styles.text}>{expiry}</Text>
 
-      <Text style={styles.label}>Category:</Text>
-      <Text style={styles.text}>{category}</Text>
+          <Text style={styles.label}>Category:</Text>
+          <Text style={styles.text}>{category}</Text>
+          <Text>{"\n"}{"\n"}{"\n"}{"\n"}{"\n"}</Text>
+        </View>
+      </ImageBackground>
     </View>
   );
 }
@@ -50,16 +56,35 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   header: {
+    marginTop: 10,
     fontWeight: "bold",
-    fontSize: 24,
+    fontSize: 28,
     textDecorationLine: "underline",
+    backgroundColor: "tomato",
+    color: "lightgrey",
+    padding: 5,
+    width: "55%",
+    textAlign: "center",
   },
   label: {
     fontWeight: "bold",
     fontSize: 20,
+    backgroundColor: "grey",
+    padding: 5,
+    width: "35%",
+    textAlign: "center",
   },
   text: {
     margin: 20,
+    marginBottom: 35,
     fontSize: 18,
+    backgroundColor: "lightgrey",
+    padding: 10,
+    width: "80%",
+    textAlign: "center",
+  },
+  image: {
+    resizeMode: "cover",
+    justifyContent: "center",
   },
 });

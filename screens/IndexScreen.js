@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Alert } from "react-native";
 import { Entypo } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import axios from "axios";
 import { FlatList, ScrollView } from "react-native-gesture-handler";
 import MyComponent from "./components/MyComponent";
@@ -56,7 +56,7 @@ export default function IndexScreen({ route, navigation }) {
               <MyComponent/>
               {/* Delete button */}
               <TouchableOpacity onPress={() => deleteItem(item.id)} style={{ paddingLeft: 15 }}>
-                <AntDesign name="delete" size={36} color="hotpink" />
+                <MaterialCommunityIcons name="delete-empty" size={44} color="maroon" />
               </TouchableOpacity>
             </View>
           </View>

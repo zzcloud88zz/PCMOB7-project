@@ -15,9 +15,33 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator mode="modal">
         <Stack.Screen component={IndexScreen} name="Index" options={{ title: 'Inventory' }} />
-        <Stack.Screen component={AddScreen} name="Additem" options={{ title: 'Add Stock' }} />
-        <Stack.Screen component={DetailsScreen} name="Details" options={{ title: 'Stock Details' }} />
-        <Stack.Screen component={EditScreen} name="EditItem" options={{ title: 'Edit item' }} />
+        <Stack.Screen
+          component={AddScreen}
+          name="Additem"
+          options={{ 
+            title: 'Add Stock',
+            headerStyle: {
+            backgroundColor: '#FF6900',
+            },
+          }} />
+        <Stack.Screen
+          component={DetailsScreen}
+          name="Details"
+          options={{
+            title: 'Stock Details',
+            headerStyle: {
+              backgroundColor: 'darkseagreen',
+              },
+          }} />
+        <Stack.Screen
+          component={EditScreen}
+          name="EditItem"
+          options={{
+            title: 'Edit item',
+            headerStyle: {
+            backgroundColor: 'skyblue',
+            },
+          }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
